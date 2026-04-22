@@ -3,23 +3,23 @@
 /* || DESIGN TOKENS */
 
 @theme {
-  /* Colors */
-  --color-background: hsl(var(--background));
-  --color-border: hsl(var(--border));
-  --color-card: hsl(var(--card));
-  --color-card-foreground: hsl(var(--card-foreground));
-  --color-foreground: hsl(var(--foreground));
-  --color-muted: hsl(var(--muted));
-  --color-muted-foreground: hsl(var(--muted-foreground));
-  --color-primary: hsl(var(--primary));
-  --color-primary-foreground: hsl(var(--primary-foreground));
-  --color-ring: hsl(var(--ring));
+  /* Colors — reference theme-scoped CSS vars for runtime theming */
+  --color-background:        var(--background);
+  --color-border:            var(--border);
+  --color-card:              var(--card);
+  --color-card-foreground:   var(--card-foreground);
+  --color-foreground:        var(--foreground);
+  --color-muted:             var(--muted);
+  --color-muted-foreground:  var(--muted-foreground);
+  --color-primary:           var(--primary);
+  --color-primary-foreground:var(--primary-foreground);
+  --color-ring:              var(--ring);
+  --color-accent:            var(--accent);
 
   /* Typography */
-  --font-mono: "JetBrains Mono", "Fira Code", "Cascadia Code", ui-monospace,
-    monospace;
-  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Helvetica, Arial, sans-serif;
+  --font-serif: "Instrument Serif", ui-serif, Georgia, serif;
+  --font-sans:  "Geist", ui-sans-serif, system-ui, sans-serif;
+  --font-mono:  "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
 
   /* Shape */
   --radius-lg: var(--radius);
@@ -31,43 +31,33 @@
 
 @layer base {
   :root {
-    --background: 0 0% 99%;
-    --border: 0 0% 90%;
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 8%;
-    --foreground: 0 0% 8%;
-    --muted: 0 0% 96%;
-    --muted-foreground: 0 0% 42%;
-    --primary: 0 0% 8%;
-    --primary-foreground: 0 0% 99%;
+    /* Earth palette — light / parchment */
+    --background:         oklch(0.965 0.010 85);   /* parchment */
+    --card:               oklch(0.940 0.012 82);   /* parchment-2 */
+    --card-foreground:    oklch(0.220 0.008 70);   /* charcoal */
+    --foreground:         oklch(0.220 0.008 70);   /* charcoal */
+    --muted:              oklch(0.905 0.014 80);   /* parchment-3 */
+    --muted-foreground:   oklch(0.600 0.012 70);   /* stone */
+    --border:             oklch(0.860 0.008 75);   /* stone-3 */
+    --primary:            oklch(0.220 0.008 70);   /* charcoal */
+    --primary-foreground: oklch(0.965 0.010 85);   /* parchment */
+    --ring:               oklch(0.220 0.008 70);
+    --accent:             oklch(0.550 0.140 35);   /* rust */
     --radius: 0.375rem;
-    --ring: 0 0% 8%;
   }
 
   [data-theme="dark"] {
-    --background: 220 12% 9%;
-    --border: 220 9% 22%;
-    --card: 220 11% 12%;
-    --card-foreground: 210 15% 92%;
-    --foreground: 210 15% 92%;
-    --muted: 220 10% 16%;
-    --muted-foreground: 220 8% 56%;
-    --primary: 210 20% 88%;
-    --primary-foreground: 220 12% 9%;
-    --ring: 210 20% 88%;
-  }
-
-  [data-theme="miami-nights"] {
-    --background: 268 28% 7%;
-    --border: 270 22% 20%;
-    --card: 268 24% 10%;
-    --card-foreground: 300 10% 94%;
-    --foreground: 300 10% 94%;
-    --muted: 268 20% 14%;
-    --muted-foreground: 280 18% 62%;
-    --primary: 322 88% 62%;
-    --primary-foreground: 268 28% 7%;
-    --ring: 182 90% 52%;
+    --background:         oklch(0.180 0.008 70);
+    --card:               oklch(0.220 0.010 70);
+    --card-foreground:    oklch(0.940 0.008 80);
+    --foreground:         oklch(0.940 0.008 80);
+    --muted:              oklch(0.260 0.012 70);
+    --muted-foreground:   oklch(0.700 0.010 72);
+    --border:             oklch(0.320 0.010 72);
+    --primary:            oklch(0.940 0.008 80);
+    --primary-foreground: oklch(0.180 0.008 70);
+    --ring:               oklch(0.940 0.008 80);
+    --accent:             oklch(0.660 0.140 38);   /* rust dark */
   }
 }
 
@@ -82,10 +72,17 @@
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv11";
+    text-rendering: optimizeLegibility;
   }
 
   body {
     @apply bg-background text-foreground;
+  }
+
+  ::selection {
+    background: var(--accent);
+    color: var(--background);
   }
 }
 
@@ -94,16 +91,16 @@
 @layer base {
   :focus-visible {
     border-radius: 2px;
-    outline: 2px solid hsl(var(--ring));
+    outline: 2px solid var(--ring);
     outline-offset: 2px;
   }
 
   /* Skip to main content — visually hidden until focused */
   .skip-link {
-    background-color: hsl(var(--background));
-    border: 1px solid hsl(var(--border));
+    background-color: var(--background);
+    border: 1px solid var(--border);
     border-radius: var(--radius);
-    color: hsl(var(--foreground));
+    color: var(--foreground);
     font-size: 0.875rem;
     font-weight: 500;
     left: 1rem;
@@ -128,44 +125,51 @@
 
 @layer base {
   .prose {
-    color: hsl(var(--foreground));
+    color: var(--foreground);
     line-height: 1.75;
     max-width: 65ch;
   }
 
   .prose h1 {
-    color: hsl(var(--foreground));
-    font-size: 1.75rem;
-    font-weight: 700;
-    letter-spacing: -0.025em;
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 2.25rem;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--foreground);
     margin-bottom: 0.75rem;
     margin-top: 2rem;
   }
 
   .prose h2 {
-    color: hsl(var(--foreground));
-    font-size: 1.25rem;
-    font-weight: 600;
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: 1.75rem;
+    line-height: 1.15;
     letter-spacing: -0.015em;
+    color: var(--foreground);
     margin-bottom: 0.5rem;
     margin-top: 2rem;
   }
 
   .prose h3 {
-    color: hsl(var(--foreground));
-    font-size: 1.05rem;
-    font-weight: 600;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: 1.15rem;
+    letter-spacing: -0.01em;
+    color: var(--foreground);
     margin-bottom: 0.4rem;
     margin-top: 1.5rem;
   }
 
   .prose p {
-    color: hsl(var(--muted-foreground));
+    color: var(--muted-foreground);
     margin-bottom: 1rem;
   }
 
   .prose a {
-    color: hsl(var(--foreground));
+    color: var(--foreground);
     text-decoration: underline;
     text-underline-offset: 3px;
   }
@@ -187,17 +191,17 @@
   }
 
   .prose li {
-    color: hsl(var(--muted-foreground));
+    color: var(--muted-foreground);
     margin-bottom: 0.25rem;
   }
 
   .prose strong {
-    color: hsl(var(--foreground));
+    color: var(--foreground);
     font-weight: 600;
   }
 
   .prose code {
-    background-color: hsl(var(--muted));
+    background-color: var(--muted);
     border-radius: 0.25rem;
     font-family: var(--font-mono);
     font-size: 0.875em;
@@ -205,7 +209,7 @@
   }
 
   .prose pre {
-    background-color: hsl(var(--muted));
+    background-color: var(--muted);
     border-radius: 0.375rem;
     margin-bottom: 1rem;
     overflow-x: auto;
@@ -219,17 +223,64 @@
   }
 
   .prose hr {
-    border-color: hsl(var(--border));
+    border-color: var(--border);
     margin: 2rem 0;
   }
 
+  /* Pull-quote style blockquote */
   .prose blockquote {
-    border-left: 3px solid hsl(var(--border));
-    color: hsl(var(--muted-foreground));
+    font-family: var(--font-serif);
     font-style: italic;
-    margin-bottom: 1rem;
-    padding-left: 1rem;
+    font-weight: 400;
+    font-size: 1.35rem;
+    line-height: 1.4;
+    letter-spacing: -0.01em;
+    color: var(--foreground);
+    border-left: none;
+    padding-left: 0;
+    margin: 2rem 0;
+    max-width: 40ch;
   }
+
+  .prose blockquote::before {
+    content: "\201C";
+    color: var(--accent);
+    margin-right: 0.05em;
+  }
+
+  .prose blockquote::after {
+    content: "\201D";
+    color: var(--accent);
+    margin-left: 0.05em;
+  }
+}
+
+/* || COMPONENT STYLES */
+
+/* Feed quote card — serif pull-quote with accent quotation marks */
+.feed-quote {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.2rem;
+  line-height: 1.4;
+  letter-spacing: -0.005em;
+  color: var(--foreground);
+  border: none;
+  padding: 0;
+  margin: 0 0 0.5rem;
+}
+
+.feed-quote::before {
+  content: "\201C";
+  color: var(--accent);
+  margin-right: 0.05em;
+}
+
+.feed-quote::after {
+  content: "\201D";
+  color: var(--accent);
+  margin-left: 0.05em;
 }
 
 /* || ANIMATIONS */

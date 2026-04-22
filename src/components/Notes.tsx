@@ -103,8 +103,8 @@ function FeedCard({ item }: { item: NoteItem }) {
   if (item.type === 'quote') {
     return (
       <div className="py-2">
-        <blockquote className="text-base leading-relaxed text-foreground font-medium mb-2 pl-4 border-l-2 border-foreground/20">
-          &ldquo;{item.content}&rdquo;
+        <blockquote className="feed-quote">
+          {item.content}
         </blockquote>
         <div className="flex items-center gap-1.5 pl-4">
           <Icon aria-hidden="true" className="h-3 w-3 text-muted-foreground" />
@@ -230,7 +230,7 @@ export function Notes() {
   return (
     <div className="max-w-2xl mx-auto px-6 py-16">
       <div className="mb-10">
-        <h1 className="text-2xl font-bold tracking-tight text-foreground mb-2">
+        <h1 className="font-serif italic text-4xl leading-[1.05] tracking-[-0.02em] text-foreground mb-2">
           Notes
         </h1>
         <p className="text-sm text-muted-foreground">
@@ -243,7 +243,7 @@ export function Notes() {
         <button
           onClick={() => setFilter(null)}
           className={cn(
-            'text-xs px-2.5 py-1 rounded-full border transition-colors',
+            'font-mono text-[11px] tracking-[0.04em] px-2.5 py-0.5 rounded-full border transition-colors',
             activeType === null
               ? 'bg-foreground text-background border-foreground'
               : 'bg-transparent text-muted-foreground border-border hover:border-foreground/40 hover:text-foreground'
@@ -257,7 +257,7 @@ export function Notes() {
             onClick={() => setFilter(type === activeType ? null : type)}
             aria-pressed={type === activeType}
             className={cn(
-              'text-xs px-2.5 py-1 rounded-full border transition-colors',
+              'font-mono text-[11px] tracking-[0.04em] px-2.5 py-0.5 rounded-full border transition-colors',
               type === activeType
                 ? 'bg-foreground text-background border-foreground'
                 : 'bg-transparent text-muted-foreground border-border hover:border-foreground/40 hover:text-foreground'

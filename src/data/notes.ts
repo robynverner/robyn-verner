@@ -32,6 +32,160 @@ export interface NoteItem {
 
 export const FEED: NoteItem[] = [
   {
+    id: 'note-13',
+    type: 'article',
+    date: '2026-04-21',
+    content: "Exploring my design values",
+    slug: 'robyn-design-values',
+    body: `## Robyn Verner brand document
+
+Personal brand — v1.0. Anthropic just release their new Claude design tool, and I was excited to try it. I thought this wouuld be a great opportunity to collect my values, inspiration, and philosophy around design and engineering in one place.
+
+# Robyn Verner
+
+Senior frontend engineer. Design systems. Making the web cool again.
+
+## Who she is
+
+*"Beauty isn't decoration — it's information."*
+
+Robyn Verner is a senior frontend engineer specializing in design systems. She believes that the web should be fast, beautiful, and honest. She despises ads, dark patterns, and engagement traps. She builds things that last — clean components, scalable systems, and experiences that respect the person on the other side of the screen.
+
+## Core values
+
+Everything is intentional. Nothing is here by accident.
+
+Designs for years, not quarters. No trend-chasing.
+
+Performance is a feature. Responsive UI is worth the extra work.
+
+Form follows function, but function can be beautiful.
+
+Depth over surface. Craft over convenience. Meaning over metrics.
+
+The web should be a place to think, not a machine to capture attention.
+
+You don't have to be one thing.
+
+## Voice & tone
+
+### Clear, dry, and confident
+
+No buzzwords. No Lorem Ipsum. No filler. Words earn their space. Copy is precise and occasionally wry — never corporate, never breathless.
+
+### Direct, not cold
+
+Warmth lives in specificity. The sentence that says something real is warmer than the one that says something safe.
+
+### A thinker who ships
+
+Not just ideas — built things. The contribution chart matters. Philosophy and pragmatism in the same breath.
+
+## Visual design
+
+### Minimal but not flavorless
+
+Swiss design, Bauhaus, flat design. Geometry, symmetry, grids, white space. Structured information. Every element earns its place — but the result is not sterile.
+
+### Handcrafted, not templated
+
+Inspired by Adam Argyle's ethos: beautiful, responsive, intelligent components built with care. Not reached for — built. The web should feel like something a person made.
+
+### Interaction is intentional
+
+Transitions are deliberate, not decorative. Micro-interactions should feel earned. Motion is the punctuation of a UI — use it sparingly and precisely.
+
+### Content-first, always
+
+No ads. No infinite scroll. No engagement traps. The interface exists to serve the content, not to capture the person reading it.
+
+## Design influences
+
+### Aesthetic movements
+
+- Swiss / International Style
+- Bauhaus school
+- Flat design
+- Japandi interior
+- Mid-century modern
+- 70s & Usonian architecture
+- Modern alpine architecture
+- Pendleton textiles
+
+### Thinkers & makers
+
+- Adam Argyle
+- Cory House
+- Alana Goyal
+- Naval Ravikant
+- Viktor Frankl
+- Carl Jung
+
+## Nature references
+
+These are the places that live in the palette — earthy, warm-neutral, layered, unhurried.
+
+- Zion — The Narrows
+- Antelope Canyon, AZ
+- Grand Canyon at sunset
+- Redwoods National Forest
+- Oregon & Washington fern terrain
+- Half Dome, Yosemite
+
+## Color language
+
+Canyon sandstone — warm primary neutral. 
+
+Deep charcoal — type and structure.
+
+Parchment — background, breathing room.
+
+Fern — accent, nature, grounded.
+
+Rust — warmth, energy, emphasis.
+
+Stone — mid tone, secondary text
+
+## Typography direction
+
+Serif for character, sans-serif for clarity
+
+A distinctive serif for display moments — headings, pull quotes, the name. A clean, geometric sans-serif for UI, body, and code contexts. Never a default system font.
+
+Type is structural
+
+Consistent with Swiss design roots — hierarchy is communicated through scale, weight, and spacing, not decoration. The grid is always underneath.
+
+## Engineering philosophy
+
+Clean, readable, DRY code that anyone can understand.
+
+Know the best practices. Be pragmatic about applying them.
+
+Accessibility is not a feature — it is the baseline.
+
+Performance is a feature. Responsive UI is worth the extra work.
+
+Ship things. Build in the open. The contribution chart is a value statement.
+
+A design system is not a component library. It is a shared language.
+
+## What this brand is not
+
+Trend-chasing, Ad-supported, Dark patterns, Engagement bait, Infinite scroll, Gradient-on-white, Buzzword-filled, Finished
+
+This document is a living thing. It grows as its author grows. — 2026`,
+  },
+  {
+    id: 'note-12',
+    type: 'quote',
+    date: '2026-04-15',
+    content: "Structure must be earned.", 
+    author: 'Nick Milo',
+    source: 'Any Model. Any App. Build Your AI OS to Work Everywhere.',
+    url: 'https://www.youtube.com/watch?v=jbHB-rzKBAs',
+  },
+  {
     id: 'note-11',
     type: 'quote',
     date: '2026-04-14',

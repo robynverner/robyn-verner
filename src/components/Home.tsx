@@ -26,7 +26,7 @@ export function Home() {
     <div className="max-w-2xl mx-auto px-6 py-16">
       {/* Header */}
       <section className="mb-16">
-        <h1 className="text-2xl font-bold tracking-tight text-foreground mb-3">
+        <h1 className="font-serif italic text-4xl leading-[1.05] tracking-[-0.02em] text-foreground mb-4">
           Robyn Verner
         </h1>
         <p className="text-muted-foreground leading-relaxed mb-6 max-w-md">
@@ -68,7 +68,7 @@ export function Home() {
 
       {/* Projects */}
       <section>
-        <h2 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-6">
+        <h2 className="font-mono text-[11px] uppercase tracking-[0.08em] text-muted-foreground mb-6">
           Projects
         </h2>
         <div className="space-y-0 divide-y divide-border">
@@ -97,7 +97,7 @@ export function Home() {
                   {project.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="text-xs px-2 py-0.5 bg-muted text-muted-foreground rounded-sm font-mono"
+                      className="font-mono text-[11px] tracking-[0.04em] px-2.5 py-0.5 rounded-full border border-border text-muted-foreground"
                     >
                       {tag}
                     </span>

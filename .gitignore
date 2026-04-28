@@ -15,6 +15,7 @@ public/feed.xml
 
 # Claude Code
 .claude/settings.local.json
+.claude/skills/
 
 # Editor directories and files
 .vscode/*

@@ -23,7 +23,7 @@ export function Home() {
   usePageTitle('Home')
 
   return (
-    <div className="max-w-2xl mx-auto px-6 py-16">
+    <div className="max-w-2xl mx-auto px-6 py-16 fade-up-stagger">
       {/* Header */}
       <section className="mb-16">
         <h1 className="font-serif italic text-4xl leading-[1.05] tracking-[-0.02em] text-foreground mb-4">
@@ -117,15 +117,15 @@ export function Home() {
       {/* Footer note */}
       <div className="mt-16 pt-8 border-t border-border space-y-3">
         <p className="text-xs text-muted-foreground">
-          <strong>Currently</strong>: listening to <a
-            href="https://www.youtube.com/watch?v=clX0sY-gfvk"
+          <strong>Currently</strong>: watching <a
+            href="https://www.amazon.com/INVINCIBLE-SEASON-1/dp/B08WJN83XZ"
             target="_blank"
             rel="noopener noreferrer"
             className="underline underline-offset-2 hover:opacity-70 transition-opacity"
           >
-            Dan Carlin's Hardcore History - Mania for Subjugation II
+            Invincible
           </a>
-          . Always open to podcast recommendations!
+          . Share 'em if you got 'em. Shoot me some book, show, or podcast recommendations!
         </p>
       </div>
     </div>

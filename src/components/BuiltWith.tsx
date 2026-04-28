@@ -74,7 +74,7 @@ export function BuiltWith() {
   usePageTitle('Built With')
 
   return (
-    <div className="max-w-2xl mx-auto px-6 py-16">
+    <div className="max-w-2xl mx-auto px-6 py-16 fade-up">
       <article className="prose">
         <Markdown
           components={{

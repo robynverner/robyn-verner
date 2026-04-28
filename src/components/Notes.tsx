@@ -1,5 +1,6 @@
 import { useSearchParams, Link } from 'react-router-dom'
-import { ExternalLink, Quote, Image, FileText, MessageSquare, Palette } from 'lucide-react'
+import ReactMarkdown from 'react-markdown'
+import { ExternalLink, Link as LinkIcon, Quote, Image, FileText, MessageSquare, Palette } from 'lucide-react'
 import { format, parseISO } from 'date-fns'
 import { cn } from '../lib/utils'
 import { usePageTitle } from '../lib/usePageTitle'
@@ -10,7 +11,7 @@ const TYPE_META: Record<NoteType, { icon: typeof Quote; label: string }> = {
   thought: { icon: MessageSquare, label: 'thought' },
   article: { icon: FileText, label: 'article' },
   quote: { icon: Quote, label: 'quote' },
-  link: { icon: ExternalLink, label: 'link' },
+  link: { icon: LinkIcon, label: 'link' },
   photo: { icon: Image, label: 'photo' },
 }
 
@@ -36,16 +37,19 @@ function FeedCard({ item }: { item: NoteItem }) {
           <img
             src={item.imageSrc}
             alt={item.title ?? item.content}
-            className="w-full rounded-lg object-cover"
+            className="w-full rounded-lg object-cover image-outline"
           />
         ) : (
           <div
             role="img"
             aria-label={item.title ?? item.content}
-            className="w-full aspect-square rounded-lg bg-muted flex items-center justify-center"
+            className="w-full aspect-square rounded-lg bg-muted flex items-center justify-center image-outline"
           >
             <Icon aria-hidden="true" className="h-8 w-8 text-muted-foreground/30" />
           </div>
+        )}
+        {item.content && (
+          <p className="text-sm text-muted-foreground">{item.content}</p>
         )}
         <div className="flex items-center gap-1.5">
           <Icon aria-hidden="true" className="h-3 w-3 text-muted-foreground" />
@@ -56,9 +60,6 @@ function FeedCard({ item }: { item: NoteItem }) {
           )}
           <span className="text-xs text-muted-foreground ml-auto">{formatDate(item.date)}</span>
         </div>
-        {item.content && (
-          <p className="text-sm text-muted-foreground">{item.content}</p>
-        )}
       </div>
     )
   }
@@ -73,14 +74,14 @@ function FeedCard({ item }: { item: NoteItem }) {
           <img
             src={item.imageSrc}
             alt={item.content}
-            className="w-full rounded-lg"
+            className="w-full rounded-lg image-outline"
           />
         ) : (
           <div
             role="img"
             aria-label={item.content}
             className={cn(
-              'w-full aspect-[4/3] rounded-lg flex items-end p-4',
+              'w-full aspect-[4/3] rounded-lg flex items-end p-4 image-outline',
               item.color ?? 'bg-muted'
             )}
           >
@@ -150,11 +151,6 @@ function FeedCard({ item }: { item: NoteItem }) {
   if (item.type === 'article') {
     const inner = (
       <>
-        <div className="flex items-center gap-1.5 mb-2">
-          <Icon aria-hidden="true" className="h-3 w-3 text-muted-foreground" />
-          <span className="text-xs text-muted-foreground">{meta.label}</span>
-          <span className="text-xs text-muted-foreground ml-auto">{formatDate(item.date)}</span>
-        </div>
         {item.title && (
           <p className="text-sm font-semibold text-foreground mb-1">{item.title}</p>
         )}
@@ -166,6 +162,11 @@ function FeedCard({ item }: { item: NoteItem }) {
             Read more <span aria-hidden="true">→</span>
           </span>
         )}
+        <div className="flex items-center gap-1.5 mt-3">
+          <Icon aria-hidden="true" className="h-3 w-3 text-muted-foreground" />
+          <span className="text-xs text-muted-foreground">{meta.label}</span>
+          <span className="text-xs text-muted-foreground ml-auto">{formatDate(item.date)}</span>
+        </div>
       </>
     )
 
@@ -188,22 +189,27 @@ function FeedCard({ item }: { item: NoteItem }) {
       rel="noopener noreferrer"
       className="group block py-1"
     >
-      <div className="flex items-start justify-between gap-3 mb-1.5">
-        <div className="flex items-center gap-1.5">
-          <Icon aria-hidden="true" className="h-3 w-3 text-muted-foreground shrink-0" />
-          <span className="text-xs text-muted-foreground">{meta.label}</span>
-        </div>
-        <span className="text-xs text-muted-foreground">{formatDate(item.date)}</span>
-      </div>
-      <h3 className="text-sm font-medium text-foreground group-hover:underline underline-offset-2 mb-1.5 leading-snug">
-        {item.title}
+      <h3 className="text-sm font-medium text-foreground mb-1.5 leading-snug">
+        <span className="group-hover:underline underline-offset-2">{item.title}</span>
+        <ExternalLink aria-hidden="true" className="inline-block h-3 w-3 ml-1 align-baseline text-muted-foreground" />
       </h3>
-      <p className="text-sm text-muted-foreground leading-relaxed mb-2">
-        {item.content}
-      </p>
+      <div className="text-sm text-muted-foreground leading-relaxed mb-2 space-y-3">
+        <ReactMarkdown
+          components={{
+            p: ({ children }) => <p>{children}</p>,
+          }}
+        >
+          {item.content}
+        </ReactMarkdown>
+      </div>
       {item.source && (
-        <span className="text-xs text-muted-foreground font-mono">{item.source}</span>
+        <span className="block text-xs text-muted-foreground font-mono mb-2">{item.source}</span>
       )}
+      <div className="flex items-center gap-1.5">
+        <Icon aria-hidden="true" className="h-3 w-3 text-muted-foreground shrink-0" />
+        <span className="text-xs text-muted-foreground">{meta.label}</span>
+        <span className="text-xs text-muted-foreground ml-auto">{formatDate(item.date)}</span>
+      </div>
       <span className="sr-only">(opens in new tab)</span>
     </a>
   )
@@ -228,7 +234,7 @@ export function Notes() {
   }
 
   return (
-    <div className="max-w-2xl mx-auto px-6 py-16">
+    <div className="max-w-2xl mx-auto px-6 py-16 fade-up-stagger">
       <div className="mb-10">
         <h1 className="font-serif italic text-4xl leading-[1.05] tracking-[-0.02em] text-foreground mb-2">
           Notes
@@ -243,7 +249,8 @@ export function Notes() {
         <button
           onClick={() => setFilter(null)}
           className={cn(
-            'font-mono text-[11px] tracking-[0.04em] px-2.5 py-0.5 rounded-full border transition-colors',
+            'tap-scale relative font-mono text-[11px] tracking-[0.04em] px-2.5 py-0.5 rounded-full border',
+            'after:absolute after:inset-x-0 after:top-1/2 after:h-10 after:-translate-y-1/2 after:content-[""]',
             activeType === null
               ? 'bg-foreground text-background border-foreground'
               : 'bg-transparent text-muted-foreground border-border hover:border-foreground/40 hover:text-foreground'
@@ -257,7 +264,8 @@ export function Notes() {
             onClick={() => setFilter(type === activeType ? null : type)}
             aria-pressed={type === activeType}
             className={cn(
-              'font-mono text-[11px] tracking-[0.04em] px-2.5 py-0.5 rounded-full border transition-colors',
+              'tap-scale relative font-mono text-[11px] tracking-[0.04em] px-2.5 py-0.5 rounded-full border',
+              'after:absolute after:inset-x-0 after:top-1/2 after:h-10 after:-translate-y-1/2 after:content-[""]',
               type === activeType
                 ? 'bg-foreground text-background border-foreground'
                 : 'bg-transparent text-muted-foreground border-border hover:border-foreground/40 hover:text-foreground'

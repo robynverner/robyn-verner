@@ -47,7 +47,7 @@ export function Contact() {
   const labelClass = 'block text-sm font-medium text-foreground mb-1.5'
 
   return (
-    <div className="max-w-2xl mx-auto px-6 py-16">
+    <div className="max-w-2xl mx-auto px-6 py-16 fade-up-stagger">
       <section className="mb-10">
         <h1 className="text-2xl font-bold tracking-tight text-foreground mb-3">
           Contact
@@ -111,7 +111,7 @@ export function Contact() {
           <button
             type="submit"
             disabled={state === 'submitting'}
-            className="text-sm px-4 py-2 rounded-md bg-foreground text-background font-medium hover:opacity-80 transition-opacity disabled:opacity-40 disabled:cursor-not-allowed"
+            className="tap-scale text-sm px-4 py-2 rounded-md bg-foreground text-background font-medium hover:opacity-80 disabled:opacity-40 disabled:cursor-not-allowed"
           >
             {state === 'submitting' ? 'Sending…' : 'Send message'}
           </button>

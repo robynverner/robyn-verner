@@ -46,19 +46,23 @@ function ThemeDropdown() {
         aria-haspopup="listbox"
         aria-expanded={open}
         aria-label={`Theme: ${currentLabel}. Change theme`}
-        className="flex items-center gap-1 px-3 py-1.5 text-sm rounded-md text-muted-foreground hover:text-foreground transition-colors"
+        className="tap-scale flex items-center gap-1 px-3 py-1.5 text-sm rounded-md text-muted-foreground hover:text-foreground"
       >
         {currentLabel}
         <ChevronDown
           aria-hidden="true"
-          className={cn('w-3.5 h-3.5 transition-transform', open && 'rotate-180')}
+          className={cn(
+            'w-3.5 h-3.5 transition-transform duration-200 ease-out',
+            open && 'rotate-180'
+          )}
         />
       </button>
       {open && (
         <div
           role="listbox"
           aria-label="Theme"
-          className="absolute right-0 top-full mt-1 min-w-[100px] rounded-md border border-border bg-card shadow-md z-50 py-1"
+          className="dropdown-in absolute right-0 top-full mt-1 min-w-[100px] rounded-md bg-card z-50 py-1"
+          style={{ boxShadow: 'var(--shadow-border)' }}
         >
           {THEMES.map((t) => (
             <button
@@ -70,10 +74,10 @@ function ThemeDropdown() {
                 setOpen(false)
               }}
               className={cn(
-                'w-full text-left px-3 py-1.5 text-sm transition-colors',
+                'w-full text-left px-3 py-1.5 text-sm transition-colors duration-150 ease-out',
                 t.value === theme
                   ? 'text-foreground font-medium'
-                  : 'text-muted-foreground hover:text-foreground'
+                  : 'text-muted-foreground hover:text-foreground hover:bg-muted/40'
               )}
             >
               {t.label}

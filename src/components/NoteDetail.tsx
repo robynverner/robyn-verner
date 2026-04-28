@@ -24,19 +24,22 @@ export function NoteDetail() {
   }
 
   return (
-    <div className="max-w-2xl mx-auto px-6 py-16">
+    <div className="max-w-2xl mx-auto px-6 py-16 fade-up-stagger">
       <Link
         to="/notes"
-        className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors mb-12"
+        className="group inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors duration-150 ease-out mb-12"
       >
-        <ArrowLeft aria-hidden="true" className="h-3.5 w-3.5" />
+        <ArrowLeft
+          aria-hidden="true"
+          className="h-3.5 w-3.5 transition-transform duration-200 ease-out group-hover:-translate-x-0.5"
+        />
         Notes
       </Link>
 
       <article>
-        <header className="mb-10">
-          <p className="text-xs text-muted-foreground mb-3">{formatDate(note.date)}</p>
-          <p className="text-xl font-medium leading-snug text-foreground">{note.content}</p>
+        <header className="mb-10 prose">
+          <p className="text-xs text-muted-foreground mb-3 tabular-nums">{formatDate(note.date)}</p>
+          <h1>{note.content}</h1>
         </header>
 
         {note.body && (

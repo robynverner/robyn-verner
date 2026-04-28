@@ -1,10 +1,10 @@
 /**
  * Art — drawings, photos as art, or videos I've made
- * Articles— longer thoughts, written by me
+ * Articles — longer thoughts, written by me
  * Links — non-article things worth bookmarking publicly
  * Photos — a moment, a place, something that caught your eye
  * Quotes — standalone, no explanation needed
- * Thoughts — short observations, not full essays, more like a dispatches format
+ * Thoughts — short observations, not full essays, more like a dispatch format
  */
 export type NoteType = 'art' | 'article' | 'link' | 'photo' | 'quote' | 'thought'
 
@@ -32,6 +32,41 @@ export interface NoteItem {
 
 export const FEED: NoteItem[] = [
   {
+    id: 'note-15',
+    type: 'article',
+    date: '2026-04-28',
+    content: "My AI OS Has One Rule: Structure is Earned",
+    slug: 'ai-os',
+    body: `I've been quietly building a little AI OS for myself. Just a few folders, a handful of markdown files, and a growing pile of "skills" my AI can run on my behalf.
+                                                            
+  The mantra that keeps it honest: structure is earned.                                                                                                
+                                                            
+  Translation: I don't get to build a beautiful, gleaming, six-folder taxonomy on day one and then never use it. Every folder, every template, every skill has to prove itself by being genuinely useful. If I'm not reaching for it, it doesn't exist yet. If I am, it gets a name and a home. The system grows the way a garden does — slowly, on purpose, only where the light is.                                                                    
+                                                            
+  So far the OS is small. A few skills. A Creator's Hour log. A book log. A handful of notes. But the surprise hero of the whole thing has been the holistic daily briefing.
+
+  ## Hemingway's momentum
+
+  I stole this idea lovingly (well, the whole AI OS, really) from [Nick Milo](https://www.youtube.com/watch?v=jbHB-rzKBAs). The premise is simple: instead of asking my AI "what's on my calendar," I ask it for a full read on my life. Active threads. Where I left off. What I'm reading. What's quietly slipping. Two to four next moves, ranked.
+                                                                                                                                                       
+  The structure of this briefing reminded me of something I heard about Hemingway — he allegedly stopped his writing sessions mid-sentence so he could drop right back in the next morning. This briefing surfaces the equivalent — the half-finished thought, the open loop, the exact place I set the pen down. Re-immersion as a feature.
+                                                            
+  It has been, surprisingly, a motivation machine. I expected a status report, but I got more of a coach instead. It pulls together my website updates, my side projects, my reading list, and my life to-dos into one coherent picture.
+
+  ## Finding the light
+
+  The OS is still tiny. But I'm watching the way it grows — one earned skill at a time — and I'm starting to wonder if a version of this could live at work too. A holistic briefing for a team. A "where we left off" for a sprint.
+                                                                                                                                                       
+  For now, though, I'll keep tending the garden, one folder at a time, only where the light is. `
+  },
+  {
+    id: 'note-14',
+    type: 'quote',
+    date: '2026-04-27',
+    content: "[...] the key is always having a meaningful challenge to overcome in order to maintain flow.",
+    author: 'Héctor García, "Ikigai: The Japanese Secret to a Long and Happy Life"',
+  },
+  {
     id: 'note-13',
     type: 'article',
     date: '2026-04-21',
@@ -39,7 +74,7 @@ export const FEED: NoteItem[] = [
     slug: 'robyn-design-values',
     body: `## Robyn Verner brand document
 
-Personal brand — v1.0. Anthropic just release their new Claude design tool, and I was excited to try it. I thought this wouuld be a great opportunity to collect my values, inspiration, and philosophy around design and engineering in one place.
+Personal brand — v1.0. Anthropic just released their new Claude design tool, and I was excited to try it. I thought this would be a great opportunity to collect my values, inspiration, and philosophy around design and engineering in one place.
 
 # Robyn Verner
 
@@ -144,7 +179,7 @@ Fern — accent, nature, grounded.
 
 Rust — warmth, energy, emphasis.
 
-Stone — mid tone, secondary text
+Stone — mid tone, secondary text.
 
 ## Typography direction
 
@@ -172,7 +207,7 @@ A design system is not a component library. It is a shared language.
 
 ## What this brand is not
 
-Trend-chasing, Ad-supported, Dark patterns, Engagement bait, Infinite scroll, Gradient-on-white, Buzzword-filled, Finished
+Trend-chasing, ad-supported, dark patterns, engagement bait, infinite scroll, buzzword-filled, finished
 
 This document is a living thing. It grows as its author grows. — 2026`,
   },
@@ -208,9 +243,7 @@ This document is a living thing. It grows as its author grows. — 2026`,
     slug: 'travels-with-charley',
     body: `*Picked up after a Tim Ferriss episode. Cracked it open during a strong case of wanderlust.*
 
-Steinbeck loads his poodle Charley into a truck camper named Rocinante and drives across America. That’s mostly it. And somehow it’s enough.
-
-He’s funny and sharp and a little curmudgeonly, and it suits the road perfectly. His sense of humor and curiosity remind me of Richard Feynman, in a way. 
+Steinbeck loads his poodle, Charley, into a truck camper named Rocinante and drives across America. He’s funny and sharp and a little curmudgeonly, and it suits the road perfectly. His sense of humor and curiosity remind me of Richard Feynman, in a way. 
 
 Here are some quotes I loved.
 
@@ -233,7 +266,7 @@ His observations are the kind of thing you read and immediately recognize in you
     id: 'note-07',
     type: 'quote',
     date: '2026-03-20',
-    content: "When people say they “don’t find anything interesting,” I wonder if they’ve actually looked around. Everything is interesting.",
+    content: "When people say they \'don’t find anything interesting,\' I wonder if they’ve actually looked around. Everything is interesting.",
     author: 'Dan Koe',
   },
   {
@@ -279,8 +312,9 @@ His observations are the kind of thing you read and immediately recognize in you
     type: 'link',
     date: '2026-03-06',
     title: "Connecting Interests for a Clearer \"Why\"",
-    content:
-      "I’ve struggled with balancing hobbies and interests for years. I came across this article that helps you create a bigger \“why\”, a clearer view of the life you’re building and how all these interests are building to it. Here’s my statement: \"I am building a life where beauty, mastery, and physical presence converge — where my body is a refined instrument, my home and style are curated expressions of my inner world, and I create digital experiences that bring that same sense of beauty and coherence to other people.\"",
+    content:`I’ve struggled with balancing hobbies and interests for years. I came across this article that helps you create a bigger “why”, a clearer view of the life you’re building and how all these interests are building to it. 
+      
+Here’s my statement: **"I am building a life where beauty, mastery, and physical presence converge — where my body is a refined instrument, my home and style are curated expressions of my inner world, and I create digital experiences that bring that same sense of beauty and coherence to other people."**`,
     url: 'https://ideas.profoundideas.com/p/this-is-how-you-can-properly-manage',
     source: 'substack.com',
   },
